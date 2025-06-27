@@ -3,16 +3,16 @@
 
 n, k = map(int, input().split())
 
-# add self to friends ==> cast += 1
-casts = sorted(list(map(lambda c : int(c)+1, input().split())))
+# add self to friends ==> cost += 1
+costs = sorted(list(map(lambda c : int(c)+1, input().split())))
 
-total_cast = 0
+total_cost = 0
 count = 0
 
-for c in casts:
-    if total_cast + c > k:
+for c in costs:
+    if total_cost + c > k:
         break
-    total_cast += c
+    total_cost += c
     count += 1
 
 print(count)

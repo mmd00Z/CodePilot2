@@ -3,8 +3,8 @@ from collections import deque
 n, k = map(int, input().split())
 a = list(map(int, input().split()))
 
-min_cast = float("inf")
-casts = [0] * (n-k+1)
+min_cost = float("inf")
+costs = [0] * (n-k+1)
 wort_case = []
 dq = deque()  
 
@@ -27,44 +27,44 @@ for i in range(n):
 
 
 for i in range(k):
-    casts[0] += (i+1) - a[i]
+    costs[0] += (i+1) - a[i]
 
 for i in range(1, n-k+1):
-    casts[i] = casts[i-1] + a[i-1] - a[i+k-1]
+    costs[i] = costs[i-1] + a[i-1] - a[i+k-1]
 
 
 for i in range(n-k+1):
-    if casts[i] < min_cast and wort_case[i] <= 0:
-        min_cast = casts[i]
+    if costs[i] < min_cost and wort_case[i] <= 0:
+        min_cost = costs[i]
 
-print(min_cast if min_cast != float("inf") else -1)
+print(min_cost if min_cost != float("inf") else -1)
 
 
 
 # n, k = map(int, input().split())
 # a = list(map(int, input().split()))
 
-# min_cast = float("inf")
+# min_cost = float("inf")
 
 # if n * k > 40 * 10**9:
-#     casts = [0] * (n-k+1)
+#     costs = [0] * (n-k+1)
 #     for i in range(k):
-#         casts[0] += (i+1) - a[i]
+#         costs[0] += (i+1) - a[i]
 #     for i in range(1, n-k+1):
-#         casts[i] = casts[i-1] + a[i-1] - a[i+k-1]
-#     for c in casts:
-#         if c < min_cast and c > -1:
-#             min_cast = c
+#         costs[i] = costs[i-1] + a[i-1] - a[i+k-1]
+#     for c in costs:
+#         if c < min_cost and c > -1:
+#             min_cost = c
 # else:
 #     for i in range(len(a)-k+1):
 #         if a[i] > 1: continue
-#         cast = 0
+#         cost = 0
 #         for j in range(k):
 #             if a[i+j] > j+1:
-#                 cast = -1
+#                 cost = -1
 #                 break
-#             cast += j+1 - a[i+j]
-#         if cast != -1:
-#             min_cast = min(min_cast, cast)
+#             cost += j+1 - a[i+j]
+#         if cost != -1:
+#             min_cost = min(min_cost, cost)
 
-# print(min_cast if min_cast != float("inf") else -1)
+# print(min_cost if min_cost != float("inf") else -1)
